@@ -46,13 +46,13 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                         latestEpisodes.map(episode => {
                             return (
                                 <li key={episode.id}>
-                                    <Image 
-                                        width={192} 
-                                        height={192} 
-                                        src={episode.thumbnail} 
-                                        alt={episode.title} 
+                                    <Image
+                                        width={192}
+                                        height={192}
+                                        src={episode.thumbnail}
+                                        alt={episode.title}
                                         objectFit="cover"
-                                        />
+                                    />
 
                                     <div className={styles.episodeDetails}>
                                         <a href=""> {episode.title} </a>
@@ -61,7 +61,7 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                                     </div>
 
                                     <button type="button">
-                                        <img src="/play-green.svg" alt="Tocar episódio"/>
+                                        <img src="/play-green.svg" alt="Tocar episódio" />
                                     </button>
                                 </li>
                             )
@@ -72,6 +72,47 @@ export default function Home({ latestEpisodes, allEpisodes }) {
             </section>
 
             <section className={styles.allEpisodes}>
+                <h2> Todos episódios </h2>
+
+                <table cellSpacing={0}>
+                    <thead>
+                        <th></th>
+                        <th> Podcast</th>
+                        <th> Integrantes </th>
+                        <th> Data </th>
+                        <th> Duração </th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        {allEpisodes.map(episode => {
+                            return (
+                                <tr key={episode.id}>
+                                    <td>
+                                        <Image
+                                            width={120}
+                                            height={120}
+                                            src={episode.thumbnail}
+                                            alt={episode.title}
+                                            objectFit="cover"
+                                        />
+                                    </td>
+
+                                    <td>
+                                        <a href=""> {episode.title }</a>
+                                    </td>
+                                    <td>{episode.members}</td>
+                                    <td>{episode.publishedAt}</td>
+                                    <td>{episode.durationAsString}</td>
+                                    <td>
+                                        <button type="button">
+                                            <img src="/play-green.svg" alt="Tocar episódio"/>
+                                        </button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
 
             </section>
         </div>
