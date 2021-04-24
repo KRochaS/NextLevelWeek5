@@ -55,7 +55,7 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                                     />
 
                                     <div className={styles.episodeDetails}>
-                                        <a href=""> {episode.title} </a>
+                                        <a href={`/episodes/${episode.id}`}> {episode.title} </a>
                                         <p> {episode.members}</p>
                                         <span> {episode.durationAsString} </span>
                                     </div>
