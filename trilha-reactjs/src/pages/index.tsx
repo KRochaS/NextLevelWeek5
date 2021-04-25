@@ -1,15 +1,14 @@
-import { GetStaticProps } from 'next';
-import Image from 'next/image';
-import { api } from '../services/api';
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
-// import { useEffect } from "react"
-import styles from './home.module.scss';
+import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import { PlayerContext } from '../contexts/PlayerContext';
-
 import { useContext } from 'react';
+
+import { PlayerContext } from '../contexts/PlayerContext';
+import { api } from '../services/api';
+import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
+import styles from './home.module.scss';
 
 type Episode = {
     id: string,
@@ -163,6 +162,7 @@ export const getStaticProps: GetStaticProps = async () => {
         return {
             id: episode.id,
             title: episode.title,
+            members: episode.members,
             thumbnail: episode.thumbnail,
             publishedAt: format(parseISO(episode.published_at), 'd MMM yy', { locale: ptBR }),
             duration: Number(episode.file.duration),
