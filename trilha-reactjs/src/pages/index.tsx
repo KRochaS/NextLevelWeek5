@@ -9,13 +9,14 @@ import { usePlayer } from '../contexts/PlayerContext';
 import { api } from '../services/api';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 import styles from './home.module.scss';
+import  Head from 'next/head';
 
 type Episode = {
     id: string,
     title: string,
     thumbnail: string,
     members: string,
-    duration: string,
+    duration: number,
     durationAsString: string,
     url: string,
     publishedAt: string,
@@ -43,6 +44,10 @@ export default function Home({ latestEpisodes, allEpisodes }) {
     
     return (
         <div className={styles.homePage}>
+            <Head>
+                <title> Home | Podcastr </title>
+            </Head>
+            
             <section className={styles.latestEpisodes}>
                 <h2> Últimos Lançamentos </h2>
 
