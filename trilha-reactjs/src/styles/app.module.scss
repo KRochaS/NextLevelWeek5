@@ -5,3 +5,12 @@
         flex: 1;
     }
 }
+
+body[class="dark-mode"] .wrapper {
+
+    main {
+        background: var(--background-dark);
+
+    }
+
+}

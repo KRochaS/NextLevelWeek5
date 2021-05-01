@@ -86,3 +86,17 @@
       }
     }
   }
+
+
+  body[class="dark-mode"] .episode {
+    background: var(--background-dark);
+    
+
+    p, span {
+        color: var(--white-100);
+    }
+
+   header h1 {
+    color: var(--white-100);
+   }
+}
