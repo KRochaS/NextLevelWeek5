@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React  from 'react';
+import React from 'react';
 
 import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
