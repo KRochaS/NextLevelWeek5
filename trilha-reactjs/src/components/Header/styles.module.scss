@@ -19,4 +19,20 @@
         margin-left: auto;
         text-transform: capitalize;
     }
+
+    button {
+        border: 0;
+        outline: none;
+        padding-left: 1rem;
+        background-color: transparent;
+    }
+}
+
+body[class="dark-mode"] .headerContainer {
+    background: var(--header-dark);
+    
+
+    p, span {
+        color: var(--white-100);
+    }
 }
