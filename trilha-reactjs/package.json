@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "npm run server",
     "server": "node ./server.js",
-    "dev": "concurrently \"next dev\" \"json-server server.json -w -d -p 3333\""
+    "dev": "concurrently \"next dev\" \"json-server db.json -w -d -p 3333\""
   },
   "dependencies": {
     "axios": "^0.21.1",
