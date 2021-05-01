@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "start": "next start",
+    "start": "npm run server",
+    "server": "node ./server.js",
     "dev": "concurrently \"next dev\" \"json-server server.json -w -d -p 3333\""
   },
   "dependencies": {
