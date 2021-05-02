@@ -32,3 +32,23 @@ construída para reprodução de episódios em áudio de um podcast específico,
 - [NextJS](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [SCSS](https://sass-lang.com/)
+
+
+## :computer: Layout
+<p align="center">
+  <img src="https://github.com/KRochaS/NextLevelWeek5/blob/master/github/light-mode.PNG" width="986" >
+  <img src="https://github.com/KRochaS/NextLevelWeek5/blob/master/github/light-mode-2.PNG" width="986" >
+  <img src="https://github.com/KRochaS/NextLevelWeek5/blob/master/github/light-mode-3.PNG"  width="986" >
+</p>
+
+## :computer: Layout Dark Mode
+
+<p align="center">
+   <img src="https://github.com/KRochaS/NextLevelWeek5/blob/master/github/dark-mode.PNG"  width="986" >
+   <img src="https://github.com/KRochaS/NextLevelWeek5/blob/master/github/dark-mode-2.PNG"  width="986" >
+  <img src="https://github.com/KRochaS/NextLevelWeek5/blob/master/github/dark-mode-3.PNG"  width="986" >
+
+</p>
+
+<br/>
+<br/>
