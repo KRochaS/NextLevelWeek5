@@ -52,3 +52,21 @@ construída para reprodução de episódios em áudio de um podcast específico,
 
 <br/>
 <br/>
+
+## :wrench: Rodar o projeto
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/KRochaS/NextLevelWeek5.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd trilha-reactjs/
+
+# Instale as dependências
+$ yarn ou yarn install
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn dev 
+
+# compiled successfully
+```
