@@ -50,9 +50,6 @@ construída para reprodução de episódios em áudio de um podcast específico,
 
 </p>
 
-<br/>
-<br/>
-
 ## :wrench: Rodar o projeto
 
 ```bash
