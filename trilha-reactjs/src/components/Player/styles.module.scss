@@ -1,5 +1,5 @@
 .playerContainer {
-    
+    transition: 0.8s;
 
     padding: 3rem 4rem;
     width: 26.5rem;
@@ -145,6 +145,7 @@
 }
 
 body[class="dark-mode"] .playerContainer {
+    transition: 0.7s;
     background: var(--player-dark);
     
 

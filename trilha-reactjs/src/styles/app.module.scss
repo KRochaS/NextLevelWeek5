@@ -2,13 +2,14 @@
     display: flex;
 
     main {
+        transition: 0.7s;
         flex: 1;
     }
 }
 
 body[class="dark-mode"] .wrapper {
-
     main {
+        transition: 0.7s;
         background: var(--background-dark);
 
     }
