@@ -1,9 +1,10 @@
 import AppLoading from 'expo-app-loading';
 import React from 'react';
 
-import { Welcome } from './src/pages/Welcome';
+// import { Welcome } from './src/pages/Welcome';
 
 import { Jost_400Regular, Jost_600SemiBold, useFonts } from '@expo-google-fonts/jost';
+import { UserIdentification } from './src/pages/UserIdentification';
 
 export default function App() {
 
@@ -18,6 +19,8 @@ export default function App() {
 
 
     return (
-        <Welcome />
+        // <Welcome />
+
+        <UserIdentification />
     )
 }
