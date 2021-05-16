@@ -9,12 +9,14 @@ import {
     Text,
     TextInput,
     View,
-    Keyboard
+    Keyboard,
+    Alert
 } from 'react-native';
 
 import { Button } from '../components/Button';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function UserIdentification() {
 
@@ -42,7 +44,11 @@ export function UserIdentification() {
 
 
 
-    function handleSubmit() {
+    async function handleSubmit() {
+        if(!name) 
+            return Alert.alert('Atenção!', 'Me diz como chamar você 😥');
+
+        await AsyncStorage.setItem('@plantmanager:user', name);
         navigation.navigate('Confirmation');
     }
 
