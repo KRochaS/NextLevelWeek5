@@ -34,7 +34,7 @@ export function Welcome() {
                     style={styles.button}
                     activeOpacity={0.8}
                     onPress={handleStart}
-                    >
+                >
 
 
                     <Feather name="chevron-right" style={styles.buttonIcon} />
@@ -48,7 +48,7 @@ export function Welcome() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        
+
     },
     wrapper: {
         flex: 1,
