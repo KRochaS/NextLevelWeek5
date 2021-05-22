@@ -9,7 +9,7 @@ import { SvgFromUri } from 'react-native-svg';
 
 import waterdrop from '../assets/waterdrop.png';
 import { Button } from '../components/Button';
-import { loadPlant, PlantProps, savePlant } from '../libs/storage';
+import { PlantProps, savePlant } from '../libs/storage';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
@@ -93,21 +93,21 @@ export function PlantSave() {
                     clique no horário
                 </Text>
 
-                { showDatePicker && 
-                        <DateTimerPicker
+                {showDatePicker &&
+                    <DateTimerPicker
                         value={selectedDateTime}
                         mode="time"
                         display="spinner"
                         onChange={handleChangeTime}
 
-                    /> 
+                    />
                 }
 
                 {
                     Platform.OS === 'android' && (
                         <TouchableOpacity style={styles.dateTimePickerButton} onPress={handleOpenDateTimePickerForAndroid}>
                             <Text style={styles.dateTimePickerText}>
-                                    {`${format(selectedDateTime, 'HH:mm')}`}
+                                {`${format(selectedDateTime, 'HH:mm')}`}
                             </Text>
                         </TouchableOpacity>
                     )
