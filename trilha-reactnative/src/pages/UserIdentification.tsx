@@ -1,22 +1,22 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react';
 import {
+    Alert,
+    Keyboard,
     KeyboardAvoidingView,
-    TouchableWithoutFeedback,
     Platform,
     SafeAreaView,
     StyleSheet,
     Text,
     TextInput,
+    TouchableWithoutFeedback,
     View,
-    Keyboard,
-    Alert
 } from 'react-native';
 
 import { Button } from '../components/Button';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function UserIdentification() {
 
@@ -45,7 +45,7 @@ export function UserIdentification() {
 
 
     async function handleSubmit() {
-        if(!name) 
+        if (!name)
             return Alert.alert('Atenção!', 'Me diz como chamar você 😥');
 
         try {
