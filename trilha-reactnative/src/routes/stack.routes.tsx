@@ -2,12 +2,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
 import { Confirmation } from '../pages/Confirmation';
-import { PlantSave } from '../pages/PlantSave';
 import { MyPlants } from '../pages/MyPlants';
-import { PlantSelect } from '../pages/PlantSelect';
+import { PlantSave } from '../pages/PlantSave';
 import { UserIdentification } from '../pages/UserIdentification';
 import { Welcome } from '../pages/Welcome';
 import colors from '../styles/colors';
+import AuthRoutes from './tab.routes';
 
 
 
@@ -41,7 +41,7 @@ const AppRoutes: React.FC = () => (
 
         <stackRoutes.Screen
             name="PlantSelect"
-            component={PlantSelect}
+            component={AuthRoutes}
         />
 
         <stackRoutes.Screen
@@ -51,7 +51,7 @@ const AppRoutes: React.FC = () => (
 
         <stackRoutes.Screen
             name="MyPlants"
-            component={MyPlants}
+            component={AuthRoutes}
         />
 
     </stackRoutes.Navigator>
