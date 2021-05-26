@@ -76,7 +76,6 @@ export function MyPlants() {
     return (
         <View style={styles.container}>
             <Header />
-
             <View style={styles.spotlight}>
                 <Image
                     source={waterdrop}
@@ -120,10 +119,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
-        paddingTop: 50,
+        // paddingTop: 50,
         backgroundColor: colors.background,
 
-    },
+    }, 
     spotlight: {
         backgroundColor: colors.blue,
         paddingHorizontal: 20,
