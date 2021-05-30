@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Confirmation } from '../pages/Confirmation';
 import { MyPlants } from '../pages/MyPlants';
+import PhotoIdentification from '../pages/PhotoIdentification';
 import { PlantSave } from '../pages/PlantSave';
 import { UserIdentification } from '../pages/UserIdentification';
 import { Welcome } from '../pages/Welcome';
@@ -35,6 +36,11 @@ const AppRoutes: React.FC = () => (
         />
 
         <stackRoutes.Screen
+            name="PhotoIdentification"
+            component={PhotoIdentification}
+        />
+
+        <stackRoutes.Screen
             name="Confirmation"
             component={Confirmation}
         />
@@ -53,6 +59,8 @@ const AppRoutes: React.FC = () => (
             name="MyPlants"
             component={AuthRoutes}
         />
+
+
 
     </stackRoutes.Navigator>
 )
