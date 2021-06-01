@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+// import * as ImagePicker from 'expo-image-picker';
 import Axios from "axios";
-import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import colors from '../styles/colors';
+import {ImagePickerResponse, launchImageLibrary} from 'react-native-image-picker';
+
 
 export default function Upload() {
     // const [avatar, setAvatar] = useState();
@@ -20,13 +21,19 @@ export default function Upload() {
     //     }
     // }
 
+    function imagePickerCallback(data: ImagePickerResponse) {
+        console.log(data);
+    }
+
     return(
         <View style={styles.container}>
             <Image style={styles.avatar} 
                     source={
                         {uri: 'https://www.seekpng.com/png/detail/110-1100707_person-avatar-placeholder.png'}} 
             />
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button}
+                onPress={() => { launchImageLibrary({mediaType: 'photo'}, imagePickerCallback)}}
+            >
                 <Text style={styles.buttonText}>
                     Escolher Imagem
                 </Text>
