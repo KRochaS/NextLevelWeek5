@@ -2,40 +2,78 @@ import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 // import * as ImagePicker from 'expo-image-picker';
 import Axios from "axios";
+import Constants from "expo-constants";
 import * as Permissions from 'expo-permissions';
 import colors from '../styles/colors';
-import {ImagePickerResponse, launchImageLibrary} from 'react-native-image-picker';
+import * as ImagePicker from 'expo-image-picker';
+import api from '../services/api';
+import { ImagePickerResult } from 'expo-image-picker';
+import { ImageInfo, ImagePickerMultipleResult } from 'expo-image-picker/build/ImagePicker.types';
 
 
 export default function Upload() {
-    // const [avatar, setAvatar] = useState();
+    const [avatar, setAvatar] = useState<ImageInfo>();
 
-    // async function imagePickerCall() {
-    //     if(Constants.platform?.ios) {
-    //        const { status } =  await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
 
-    //        if(status !== 'granted') {
-    //             alert("");
-    //             return;
-    //        }
-    //     }
-    // }
 
-    function imagePickerCallback(data: ImagePickerResponse) {
-        console.log(data);
+    async function imagePickerCall() {
+        if (Constants.platform?.ios) {
+            const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
+
+            if (status !== 'granted') {
+                alert("Precisamos de permissão");
+                return;
+            }
+        }
+
+        const data = await ImagePicker.launchImageLibraryAsync({});
+
+      
+        if(data.cancelled) 
+            return;
+
+        if(!data.uri) 
+            return;
+
+        setAvatar(data);
     }
 
-    return(
+
+
+    async function uploadImage() {
+        const data = {
+            uri: avatar?.uri
+        }
+
+
+        await api.post(`users`, data);
+    }
+
+    return (
+
         <View style={styles.container}>
-            <Image style={styles.avatar} 
-                    source={
-                        {uri: 'https://www.seekpng.com/png/detail/110-1100707_person-avatar-placeholder.png'}} 
+            <Image style={styles.avatar}
+                source={
+                    {
+                        uri:
+                            avatar && avatar.uri ? avatar.uri
+                                :
+                                'file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.1.32-PlantManager/ImagePicker/f465749f-62c6-469c-86f4-b7cfa213af02.jpg'
+                    }}
             />
             <TouchableOpacity style={styles.button}
-                onPress={() => { launchImageLibrary({mediaType: 'photo'}, imagePickerCallback)}}
+                onPress={imagePickerCall}
             >
                 <Text style={styles.buttonText}>
                     Escolher Imagem
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button}
+                onPress={uploadImage}
+            >
+                <Text style={styles.buttonText}>
+                    Enviar Imagem
                 </Text>
             </TouchableOpacity>
 
@@ -47,8 +85,8 @@ export default function Upload() {
 
     // async function uploadImage() {
     //     const data = new FormData();
-        
-    
+
+
     //     data.append("avatar", {
     //         fileName: avatar.fileName,
     //         uri: avatar.uri,
@@ -83,5 +121,5 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 50
     }
-    
+
 })
