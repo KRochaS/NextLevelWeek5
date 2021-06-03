@@ -1,6 +1,7 @@
 import { Feather } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import wateringImg from '../assets/watering.png';
@@ -8,11 +9,26 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export function Welcome() {
+    const [userName, setUserName] = useState<string>();
 
     const navigation = useNavigation();
 
+   
+    useEffect(() => {
+        loadStorageUserName();
+    }, [])
+
+    async function loadStorageUserName() {
+        const user = await AsyncStorage.getItem('@plantmanager:user');
+        setUserName(user || '');
+    }
+    
     function handleStart() {
-        navigation.navigate('UserIdentification');
+        if(userName) {
+            navigation.navigate('PlantSelect');
+        } else {
+            navigation.navigate('UserIdentification');
+        }
     }
 
     return (
