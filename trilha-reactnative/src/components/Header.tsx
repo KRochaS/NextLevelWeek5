@@ -22,8 +22,6 @@ export function Header() {
         async function loadStoragePhotoIdentification() {
             const photo = await AsyncStorage.getItem('@plantmanager:photoUser');
             setPhoto(photo || '');
-            console.log('loadphoto', photo);
-
         }
 
 
