@@ -60,7 +60,10 @@ export function MyPlants() {
             );
 
             setNextWatered(
-                `Não esqueça de regar a ${plantsStoraged[0].name} à ${nextTime} horas.`
+                plantsStoraged !== undefined ?
+                `Não esqueça de regar a ${plantsStoraged[0].name} daqui à ${nextTime}`
+                :
+                `Não há plantas na sua lista`
             )
 
             setMyPlants(plantsStoraged);
@@ -133,12 +136,12 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     spotlightImage: {
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
     },
     spotlightText: {
         flex: 1,
-        color: colors.blue,
+        color: colors.blue_light,
         paddingHorizontal: 20,
     },
     plants: {
