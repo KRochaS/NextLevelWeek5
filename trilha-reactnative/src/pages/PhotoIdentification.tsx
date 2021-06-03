@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-// import * as ImagePicker from 'expo-image-picker';
-import Axios from "axios";
-import Constants from "expo-constants";
-import * as Permissions from 'expo-permissions';
-import colors from '../styles/colors';
+import { useNavigation } from '@react-navigation/native';
+import Constants from 'expo-constants';
 import * as ImagePicker from 'expo-image-picker';
-import api from '../services/api';
-import { ImagePickerResult } from 'expo-image-picker';
-import { ImageInfo, ImagePickerMultipleResult } from 'expo-image-picker/build/ImagePicker.types';
+import { ImageInfo } from 'expo-image-picker/build/ImagePicker.types';
+import * as Permissions from 'expo-permissions';
+import React, { useState } from 'react';
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { savePhotoIdentification } from '../libs/storage';
+import colors from '../styles/colors';
+
+// import * as ImagePicker from 'expo-image-picker';
 
 export default function Upload() {
+    const navigation = useNavigation();
+
     const [avatar, setAvatar] = useState<ImageInfo>();
 
 
@@ -28,25 +30,35 @@ export default function Upload() {
 
         const data = await ImagePicker.launchImageLibraryAsync({});
 
-      
-        if(data.cancelled) 
+
+        if (data.cancelled)
             return;
 
-        if(!data.uri) 
+        if (!data.uri)
             return;
 
         setAvatar(data);
     }
 
+    function handleConfirmation() {
+        navigation.navigate('Confirmation', {
+            title: 'Prontinho',
+            subtitle: 'Agora vamos começar a cuidar das suas plantinhas com muito cuidado.',
+            buttonTitle: 'Começar',
+            icon: 'smile',
+            nextScreen: 'PlantSelect'
+        });
+    }
 
 
     async function uploadImage() {
-        const data = {
-            uri: avatar?.uri
+        try {
+            if (avatar && avatar.uri) {
+                await savePhotoIdentification(avatar.uri);
+            }
+        } catch {
+            Alert.alert('Não foi possível salvar a foto! 😥');
         }
-
-
-        await api.post(`users`, data);
     }
 
     return (
@@ -58,7 +70,7 @@ export default function Upload() {
                         uri:
                             avatar && avatar.uri ? avatar.uri
                                 :
-                                'file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.1.32-PlantManager/ImagePicker/f465749f-62c6-469c-86f4-b7cfa213af02.jpg'
+                                'https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png'
                     }}
             />
             <TouchableOpacity style={styles.button}
@@ -77,24 +89,16 @@ export default function Upload() {
                 </Text>
             </TouchableOpacity>
 
+            <TouchableOpacity style={styles.button}
+                onPress={handleConfirmation}
+            >
+                <Text style={styles.buttonText}>
+                    Confirmar
+                </Text>
+            </TouchableOpacity>
+
         </View>
     )
-
-
-
-
-    // async function uploadImage() {
-    //     const data = new FormData();
-
-
-    //     data.append("avatar", {
-    //         fileName: avatar.fileName,
-    //         uri: avatar.uri,
-    //         type: avatar.type
-    //     });
-
-    //     await Axios.post("http://localhost:3333/files", data);
-    // }
 }
 
 
