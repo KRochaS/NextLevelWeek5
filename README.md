@@ -130,7 +130,7 @@ $ cd trilha-reactnative/
 $ yarn ou yarn install
 
 # Colocar IP do PC no script dev
-$"scripts": {
+$ "scripts": {
     "dev": "concurrently \"expo start\" \"json-server ./src/services/server.json --host ip --port 3333 --delay 700\"",
 }
 
